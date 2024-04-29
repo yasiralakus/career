@@ -10,7 +10,7 @@ export default function App() {
     const [openLogin, setOpenLogin] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(null);
     const [userData, setUserData] = useState(null);
-    const [reklam, setReklam] = useState(false);
+    const [otherProjects, setOtherProjects] = useState(false);
     
     useEffect(() => {
         const handleScroll = () => {
@@ -22,14 +22,6 @@ export default function App() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-          setReklam(true);
-        }, 5000);
-    
-        return () => clearTimeout(timer);
-      }, []);
 
     async function handleSignup(e) {
         e.preventDefault();
@@ -102,24 +94,48 @@ export default function App() {
   
     }
 
-    function reklamfunc(e) {
-        e.preventDefault();
-        setReklam(false)
-    }
-
     return (
         <div className="full-page">
 
-            {reklam === true && 
-                <Link to={'https://yasiralakus-ankablog.netlify.app/'} className="reklam-ankablog">
-                    <button onClick={reklamfunc}><i className="fa-solid fa-xmark"></i></button>
-                    <img src="./img/reklam/anka.png" alt="" />
-                    <div>
-                        <h1>Keşfet, Öğren, Paylaş: <span>Anka Blog</span></h1>
-                        <p>Anka Blog ile her konuda düşüncelerinizi paylaşabilir diğer kullanıcılarla etkileşime geçebilirsiniz.</p>
-                    </div>
+            <button id="other-button" onClick={() => (otherProjects === true ? setOtherProjects(false) : setOtherProjects(true))}>
+                <i style={otherProjects === true ? {transform: 'rotateY(180deg)'} : {}} className="fa-solid fa-angle-right"></i>
+            </button>
+
+            <div style={otherProjects === true ? {left: '0'}:{}} className="other-projects">
+
+                <h1>DİĞER PROJELERİM</h1>
+
+                <Link to={'https://yasiralakus-ankablog.netlify.app/'} className="other-projects-item">
+                    <h3>Anka Blog</h3>
+                    <p>Çok kullanıcılı blog paylaşım sitesi.</p>
                 </Link>
-            }
+
+                <Link to={'https://yasiralakus-ecommerce.netlify.app/'} className="other-projects-item">
+                    <h3>E-Ticaret Sitesi</h3>
+                    <p>Ürünlerin listelendiği site tasarımı.</p>
+                </Link>
+
+                <Link to={'https://yasiralakus-filmapp.netlify.app/'} className="other-projects-item">
+                    <h3>Dijital Film Platformu</h3>
+                    <p>Filmlerin yer aldığı platform tasarımı.</p>
+                </Link>
+
+                <Link to={'https://yasiralakus-rockpaperscissors.netlify.app/'} className="other-projects-item">
+                    <h3>Taş Kağıt Makas</h3>
+                    <p>Taş, kağıt, makas oyunu.</p>
+                </Link>
+
+                <Link to={'https://weather-app-yasiralakus.netlify.app/'} className="other-projects-item">
+                    <h3>Hava Durumu Uygulaması</h3>
+                    <p>Dilediğiniz şehrin 3 günlük sonuçlarına ulaşabilirsiniz.</p>
+                </Link>
+
+                <Link to={'https://weather-app-yasiralakus.netlify.app/'} className="other-projects-item">
+                    <h3>Vücut Kitle İndeksi Hesaplayıcı</h3>
+                    <p>Boy ve kilo bilgilerinizi girerek hesaplama yapabilirsiniz.</p>
+                </Link>
+                
+            </div>
 
             <button onClick={() => (window.scrollTo(0, 0))} style={scrollPosition > 200 ? {opacity: '1'}: {}} className="go-to-top"><i className="fa-solid fa-arrow-up"></i></button>
 
