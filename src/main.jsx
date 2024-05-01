@@ -7,6 +7,8 @@ import Home from './Pages/Home.jsx'
 import Jobs from './Pages/Jobs.jsx'
 import Companies from './Pages/Companies.jsx'
 import About from './Pages/About.jsx'
+import JobDetails from './Pages/JobDetails.jsx'
+import CompanyDetails from './Pages/CompanyDetails.jsx'
 
 const router = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: '/about-us',
                 element: <About />
+            },
+            {
+                path: '/job-details',
+                element: <JobDetails />
+            },
+            {
+                path: '/company-details',
+                element: <CompanyDetails />
             }
         ]
     }

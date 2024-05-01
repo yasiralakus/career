@@ -1,27 +1,86 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../App";
 
 export default function Companies() {
-
-    const [companyData, setCompanyData] = useState(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
-    
-    useEffect(() => {
-        async function fetchData() {
 
-            let { data: companies, error } = await supabase
-            .from('companies')
-            .select('*')
-            setCompanyData(companies ? companies : null)
-        }
-        fetchData()
-    }, [])
+    const companies = [
+        {
+            company_logo: './img/home/company01.png',
+            company_name: 'Envato',
+            company_location: 'Melbourne / Australia',
+        },
+
+        {
+            company_logo: './img/home/company02.png',
+            company_name: 'Astha',
+            company_location: 'Dhaka / Bangladesh',
+        },
+
+        {
+            company_logo: './img/home/company03.png',
+            company_name: 'Github',
+            company_location: 'San Francisco / USA',
+        },
+
+        {
+            company_logo: './img/home/company04.png',
+            company_name: 'Medicore',
+            company_location: 'Los Angeles / USA',
+        },
+
+        {
+            company_logo: './img/home/company05.png',
+            company_name: 'Greensoul',
+            company_location: 'Tokyo / Japan',
+        },
+
+        {
+            company_logo: './img/home/company10.png',
+            company_name: 'Bebsha',
+            company_location: 'Coimbra / Portugal',
+        },
+
+        {
+            company_logo: './img/home/company07.png',
+            company_name: 'Buzco',
+            company_location: 'Dubai / UAE',
+        },
+
+        {
+            company_logo: './img/home/company12.png',
+            company_name: 'Donna',
+            company_location: 'Liverpool / UK',
+        },
+
+        {
+            company_logo: './img/home/company11.png',
+            company_name: 'Fnions',
+            company_location: 'Madrid / Spain',
+        },
+
+        {
+            company_logo: './img/home/company06.png',
+            company_name: 'Generous',
+            company_location: 'Osaka / Japan',
+        },
+
+        {
+            company_logo: './img/home/company09.png',
+            company_name: 'Hope',
+            company_location: 'Ottawa / Canada',
+        },
+
+        {
+            company_logo: './img/home/company08.png',
+            company_name: 'Salina',
+            company_location: 'Cambridge / UK',
+        },
+    ]
     
-    console.log(companyData)
 
     return (
         <div className="outlet-page">
@@ -46,35 +105,26 @@ export default function Companies() {
 
                     <div className="compaines-container-left">
 
-                        <div style={{position: 'relative'}}>
-                            {
-                                companyData ? companyData.map(x => (
-
-                                    <Link key={x.company_id} className="compaines-item">
-                                        <img src={x.company_logo} alt="" />
-                                        <h1>{x.company_name}</h1>
-                                        <h6>2 iş ilanı</h6>
-                                        <p><i className="fa-regular fa-map"></i> {x.company_location}</p>
-                                    </Link>
-                                )) :
-                                <div className="loading-bg" style={{position: 'absolute', inset: '0'}}>
-                                    <div style={{marginTop: '50px'}} className="loading"></div>
-                                </div>
-                                
-                            }
+                        <div>
+                            {companies.map(x => (
+                                <Link to={'/company-details'} className="compaines-item">
+                                    <img src={x.company_logo} alt="" />
+                                    <h1>{x.company_name}</h1>
+                                    <h6>2 iş ilanı</h6>
+                                    <p><i className="fa-regular fa-map"></i> {x.company_location}</p>
+                                </Link>
+                            ))}
                         </div>
 
-                        {companyData &&
-                            <div className="compaines-container-left-navigation">
-                                <button><i className="fa-solid fa-angle-left"></i></button>
-                                <button style={{background: '#007BFF', color: '#fff'}}>1</button>
-                                <button>2</button>
-                                <button>3</button>
-                                <button>4</button>
-                                <button>5</button>
-                                <button><i className="fa-solid fa-angle-right"></i></button>
-                            </div>
-                        }
+                        {/* <div className="compaines-container-left-navigation">
+                            <button><i className="fa-solid fa-angle-left"></i></button>
+                            <button style={{background: '#007BFF', color: '#fff'}}>1</button>
+                            <button>2</button>
+                            <button>3</button>
+                            <button>4</button>
+                            <button>5</button>
+                            <button><i className="fa-solid fa-angle-right"></i></button>
+                        </div> */}
 
                     </div>
 

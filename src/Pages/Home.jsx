@@ -2,18 +2,115 @@ import { Link } from "react-router-dom";
 import CompanySliders from "../Components/CompanySliders";
 import CommentSliders from "../Components/CommentSliders";
 import { useEffect, useState } from "react";
-import { supabase } from "../App";
 
 export default function Home() {
     useEffect(() => {
         window.scrollTo(0, 0);
     }, [])
 
+    const jobs = [
+        {
+            job_title: 'Full Stack Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Georgia / USA',
+            job_salary: '$5000 - $8000',
+            company_name: 'Envato',
+            company_logo: './img/home/company01.png'
+        },
+        {
+            job_title: 'Frontend Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Lisbon / Portugal',
+            job_salary: '$4000 - $6000',
+            company_name: 'Github',
+            company_logo: './img/home/company03.png'
+        },
+        {
+            job_title: 'UI & UX Designer',
+            job_status: 'Part Time',
+            job_locaiton: 'Tokyo / Japan',
+            job_salary: '$3000 - $5000',
+            company_name: 'Astha',
+            company_logo: './img/home/company02.png'
+        },
+        {
+            job_title: 'Game Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Londra / UK',
+            job_salary: '$8000 - $10000',
+            company_name: 'Bebsha',
+            company_logo: './img/home/company10.png'
+        },
+        {
+            job_title: 'Frontend Developer',
+            job_status: 'Freelance',
+            job_locaiton: 'Dubai / UAE',
+            job_salary: '$4000 - $8000',
+            company_name: 'Hope',
+            company_logo: './img/home/company09.png'
+        },
+        {
+            job_title: 'Backend Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Istanbul / Turkey',
+            job_salary: '$3000 - $6000',
+            company_name: 'Generous',
+            company_logo: './img/home/company06.png'
+        },
+        {
+            job_title: 'Backend Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Osaka / Japan',
+            job_salary: '$4000 - $8000',
+            company_name: 'Salina',
+            company_logo: './img/home/company08.png'
+        },
+        {
+            job_title: 'Game Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Moscow / Russia',
+            job_salary: '$5000 - $6000',
+            company_name: 'Medicore',
+            company_logo: './img/home/company04.png'
+        },
+        {
+            job_title: 'Mobile App Developer',
+            job_status: 'Part Time',
+            job_locaiton: 'Milano / Italy',
+            job_salary: '$4000 - $8000',
+            company_name: 'Greensoul',
+            company_logo: './img/home/company05.png'
+        },
+        {
+            job_title: 'Mobile App Developer',
+            job_status: 'Freelance',
+            job_locaiton: 'Roma / Italy',
+            job_salary: '$2000 - $6000',
+            company_name: 'Generous',
+            company_logo: './img/home/company06.png'
+        },
+        {
+            job_title: 'React Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Milano / Italy',
+            job_salary: '$4000 - $8000',
+            company_name: 'Buzco',
+            company_logo: './img/home/company07.png'
+        },
+        {
+            job_title: 'Data Analyst',
+            job_status: 'Freelance',
+            job_locaiton: 'Utah / USA',
+            job_salary: '$6000 - $10000',
+            company_name: 'Envato',
+            company_logo: './img/home/company01.png'
+        },
+    ]
+
     const [post,setPost] = useState(0);
     const [member,setMembers] = useState(0);
     const [company,setCompany] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(0);
-    const [jobsData, setJobsData] = useState(null)
 
     useEffect(() => {
         const handleScroll = () => {
@@ -25,17 +122,6 @@ export default function Home() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
-    useEffect(() => {
-        async function fetchData() {
-            let { data: jobs, error } = await supabase
-                .from('jobs')
-                .select('*')
-                setJobsData(jobs ? jobs : null)
-        }
-        fetchData()
-    }, [])
-
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -116,12 +202,12 @@ export default function Home() {
 
                         <div>
 
-                        {jobsData && jobsData.slice(0, 5).map(x => (
-                            <Link key={x.job_id} className="latest-jobs-item">
+                        {jobs.slice(0,5).map(x => (
+                            <Link className="latest-jobs-item">
                                 <img src={x.company_logo} alt="" />
                                 <div className="" style={{textAlign: 'left', marginRight: 'auto'}}>
                                     <h3>{x.job_title}</h3>
-                                    <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_location}</p>
+                                    <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_locaiton}</p>
                                 </div>
                                 <div style={{alignItems: 'end'}}>
                                     <h5>{x.job_salary}</h5>

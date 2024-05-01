@@ -1,24 +1,123 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { supabase } from "../App";
 
 export default function Jobs() {
 
-    const [jobsData, setJobsData] = useState(null)
+    const [jobsPage, setJobsPage] = useState(1);
+
+    const jobs = [
+        {
+            job_title: 'Full Stack Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Georgia / USA',
+            job_salary: '$5000 - $8000',
+            company_name: 'Envato',
+            company_logo: './img/home/company01.png',
+            job_experience: '1 - 2 Yıl'
+        },
+        {
+            job_title: 'Frontend Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Lisbon / Portugal',
+            job_salary: '$4000 - $6000',
+            company_name: 'Github',
+            company_logo: './img/home/company03.png',
+            job_experience: '3 - 4 Yıl'
+        },
+        {
+            job_title: 'UI & UX Designer',
+            job_status: 'Part Time',
+            job_locaiton: 'Tokyo / Japan',
+            job_salary: '$3000 - $5000',
+            company_name: 'Astha',
+            company_logo: './img/home/company02.png',
+            job_experience: '1 - 2 Yıl'
+        },
+        {
+            job_title: 'Game Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Londra / UK',
+            job_salary: '$8000 - $10000',
+            company_name: 'Bebsha',
+            company_logo: './img/home/company10.png',
+            job_experience: '5 - 6 Yıl'
+        },
+        {
+            job_title: 'Frontend Developer',
+            job_status: 'Freelance',
+            job_locaiton: 'Dubai / UAE',
+            job_salary: '$4000 - $8000',
+            company_name: 'Hope',
+            company_logo: './img/home/company09.png',
+            job_experience: '3 - 4 Yıl'
+        },
+        {
+            job_title: 'Backend Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Istanbul / Turkey',
+            job_salary: '$3000 - $6000',
+            company_name: 'Generous',
+            company_logo: './img/home/company06.png',
+            job_experience: '1 - 2 Yıl'
+        },
+        {
+            job_title: 'Backend Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Osaka / Japan',
+            job_salary: '$4000 - $8000',
+            company_name: 'Salina',
+            company_logo: './img/home/company08.png',
+            job_experience: '3 - 4 Yıl'
+        },
+        {
+            job_title: 'Game Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Moscow / Russia',
+            job_salary: '$5000 - $6000',
+            company_name: 'Medicore',
+            company_logo: './img/home/company04.png',
+            job_experience: '1 - 2 Yıl'
+        },
+        {
+            job_title: 'Mobile App Developer',
+            job_status: 'Part Time',
+            job_locaiton: 'Milano / Italy',
+            job_salary: '$4000 - $8000',
+            company_name: 'Greensoul',
+            company_logo: './img/home/company05.png',
+            job_experience: '3 - 4 Yıl'
+        },
+        {
+            job_title: 'Mobile App Developer',
+            job_status: 'Freelance',
+            job_locaiton: 'Roma / Italy',
+            job_salary: '$2000 - $6000',
+            company_name: 'Generous',
+            company_logo: './img/home/company06.png',
+            job_experience: '1 - 2 Yıl'
+        },
+        {
+            job_title: 'React Developer',
+            job_status: 'Full Time',
+            job_locaiton: 'Milano / Italy',
+            job_salary: '$4000 - $8000',
+            company_name: 'Buzco',
+            company_logo: './img/home/company07.png',
+            job_experience: '3 - 4 Yıl'
+        },
+        {
+            job_title: 'Data Analyst',
+            job_status: 'Freelance',
+            job_locaiton: 'Utah / USA',
+            job_salary: '$6000 - $10000',
+            company_name: 'Envato',
+            company_logo: './img/home/company01.png',
+            job_experience: '5 - 6 Yıl'
+        },
+    ]
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [])
-
-    useEffect(() => {
-        async function fetchData() {
-
-            let { data: jobs, error } = await supabase
-                .from('jobs')
-                .select('*')
-                setJobsData(jobs ? jobs : null)
-        }
-        fetchData()
     }, [])
 
     return (
@@ -208,24 +307,62 @@ export default function Jobs() {
 
                     <div className="jobs-container-left">
 
-                        {
-                            jobsData ? jobsData.map(x => (
-                                <Link key={x.job_id} className="latest-jobs-item">
+                        <div>
+                            {jobsPage === 1 &&
+                            jobs.slice(0,5).map(x => (
+                                <Link to={'/job-details'} className="latest-jobs-item">
                                     <img src={x.company_logo} alt="" />
                                     <div className="" style={{textAlign: 'left', marginRight: 'auto'}}>
                                         <h3>{x.job_title}</h3>
-                                        <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_location}</p>
+                                        <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_locaiton}</p>
                                     </div>
                                     <div style={{alignItems: 'end'}}>
                                         <h5>{x.job_salary}</h5>
                                         <h4 style={{backgroundColor: x.job_status === 'Full Time' ? '#4CAF50' : (x.job_status === 'Part Time' ? '#FFC107' : (x.job_status === 'Freelance' ? '#F44336' : 'initial'))}}>{x.job_status}</h4>
                                     </div>
                                 </Link>
-                            )) :
-                            <div className="loading-bg">
-                                <div className="loading"></div>
-                            </div>
-                        }
+                            ))}
+
+                            {jobsPage === 2 &&
+                            jobs.slice(5,10).map(x => (
+                                <Link to={'/job-details'} className="latest-jobs-item">
+                                    <img src={x.company_logo} alt="" />
+                                    <div className="" style={{textAlign: 'left', marginRight: 'auto'}}>
+                                        <h3>{x.job_title}</h3>
+                                        <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_locaiton}</p>
+                                    </div>
+                                    <div style={{alignItems: 'end'}}>
+                                        <h5>{x.job_salary}</h5>
+                                        <h4 style={{backgroundColor: x.job_status === 'Full Time' ? '#4CAF50' : (x.job_status === 'Part Time' ? '#FFC107' : (x.job_status === 'Freelance' ? '#F44336' : 'initial'))}}>{x.job_status}</h4>
+                                    </div>
+                                </Link>
+                            ))}
+
+                            {jobsPage === 3 &&
+                            jobs.slice(10,15).map(x => (
+                                <Link to={'/job-details'} className="latest-jobs-item">
+                                    <img src={x.company_logo} alt="" />
+                                    <div className="" style={{textAlign: 'left', marginRight: 'auto'}}>
+                                        <h3>{x.job_title}</h3>
+                                        <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_locaiton}</p>
+                                    </div>
+                                    <div style={{alignItems: 'end'}}>
+                                        <h5>{x.job_salary}</h5>
+                                        <h4 style={{backgroundColor: x.job_status === 'Full Time' ? '#4CAF50' : (x.job_status === 'Part Time' ? '#FFC107' : (x.job_status === 'Freelance' ? '#F44336' : 'initial'))}}>{x.job_status}</h4>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+
+                        <div className="compaines-container-left-navigation">
+                            <button onClick={() => (jobsPage > 1 && setJobsPage(jobsPage - 1))} ><i className="fa-solid fa-angle-left"></i></button>
+                            <button onClick={() => setJobsPage(1)} style={jobsPage === 1 ?{background: '#007BFF', color: '#fff'} : {}}>1</button>
+                            <button onClick={() => setJobsPage(2)} style={jobsPage === 2 ?{background: '#007BFF', color: '#fff'} : {}}>2</button>
+                            <button onClick={() => setJobsPage(3)} style={jobsPage === 3 ?{background: '#007BFF', color: '#fff'} : {}}>3</button>
+                            <button onClick={() => setJobsPage(4)} style={jobsPage === 4 ?{background: '#007BFF', color: '#fff'} : {}}>4</button>
+                            <button onClick={() => setJobsPage(5)} style={jobsPage === 5 ?{background: '#007BFF', color: '#fff'} : {}}>5</button>
+                            <button onClick={() => (jobsPage < 5 && setJobsPage(jobsPage + 1))}><i className="fa-solid fa-angle-right"></i></button>
+                        </div>
 
                     </div>
 
@@ -256,8 +393,6 @@ export default function Jobs() {
                                     <option value="">Full Time</option>
                                     <option value="">Part Time</option>
                                     <option value="">Freelance</option>
-                                    <option value="">Intership</option>
-                                    <option value="">Temporary</option>
                                 </select>
                             </div>
                             <div>

@@ -2,14 +2,11 @@ import { createClient } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
 
-export const supabase = createClient('https://hubaygyhcdmzbvakrenc.supabase.co', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh1YmF5Z3loY2RtemJ2YWtyZW5jIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTQ0MDc5ODksImV4cCI6MjAyOTk4Mzk4OX0.dmKv3X-QeUZ8z92_qOYxX19xhcWkfuIIllYZxdrgjO8')
-
 export default function App() {
 
     const [login, setLogin] = useState(true);
     const [openLogin, setOpenLogin] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(null);
-    const [userData, setUserData] = useState(null);
     const [otherProjects, setOtherProjects] = useState(false);
     
     useEffect(() => {
@@ -22,77 +19,6 @@ export default function App() {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
-
-    async function handleSignup(e) {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const formObj = Object.fromEntries(formData);
-        console.log(formObj)
-        
-        let { data: signup, error } = await supabase.auth.signUp(formObj);
-
-        if(!error) {
-            
-            const { data, error } = await supabase
-                .from('profiles')
-                .insert([
-                    {
-                        name: formObj.name,
-                        surname: formObj.surname,
-                        email: signup.user.email,
-                        user_id: signup.user.id
-                    }
-                ])
-                .select()
-
-        }
-
-        alert('KAYIT BAŞARILI. GİRİŞ YAPABİLİRSİNİZ');
-        setLogin(true);
-  
-    }
-
-    useEffect(() => {
-        async function fetchUser() {
-            const { data: { user } } = await supabase.auth.getUser();
-            
-            let { data: profiles, error } = await supabase
-                .from('profiles')
-                .select('*')
-                .eq('user_id', user.id)
-
-            setUserData(profiles ? profiles[0] : null)
-
-        }
-        fetchUser()
-    }, [])
-
-    async function handleLogout(e) {
-        e.preventDefault();
-        let { error } = await supabase.auth.signOut();
-        setUserData(null);
-    }
-
-    async function handleLogin(e) {
-        e.preventDefault();
-        const formData = new FormData(e.target);
-        const formObj = Object.fromEntries(formData);
-        console.log(formObj)
-        
-        let { data, error } = await supabase.auth.signInWithPassword(formObj);
-        console.log(data)
-
-        if(!error) {
-            
-            let { data: profiles, error } = await supabase
-                .from('profiles')
-                .select('*')
-                .eq('user_id', data.user.id)
-                setUserData(profiles ? profiles[0] : null);
-                setOpenLogin(false);
-        }
-  
-    }
 
     return (
         <div className="full-page">
@@ -107,32 +33,26 @@ export default function App() {
 
                 <Link to={'https://yasiralakus-ankablog.netlify.app/'} className="other-projects-item">
                     <h3>Anka Blog</h3>
-                    <p>Çok kullanıcılı blog paylaşım sitesi.</p>
                 </Link>
 
                 <Link to={'https://yasiralakus-ecommerce.netlify.app/'} className="other-projects-item">
                     <h3>E-Ticaret Sitesi</h3>
-                    <p>Ürünlerin listelendiği site tasarımı.</p>
                 </Link>
 
                 <Link to={'https://yasiralakus-filmapp.netlify.app/'} className="other-projects-item">
                     <h3>Dijital Film Platformu</h3>
-                    <p>Filmlerin yer aldığı platform tasarımı.</p>
                 </Link>
 
                 <Link to={'https://yasiralakus-rockpaperscissors.netlify.app/'} className="other-projects-item">
                     <h3>Taş Kağıt Makas</h3>
-                    <p>Taş, kağıt, makas oyunu.</p>
                 </Link>
 
                 <Link to={'https://weather-app-yasiralakus.netlify.app/'} className="other-projects-item">
                     <h3>Hava Durumu Uygulaması</h3>
-                    <p>Dilediğiniz şehrin 3 günlük sonuçlarına ulaşabilirsiniz.</p>
                 </Link>
 
                 <Link to={'https://weather-app-yasiralakus.netlify.app/'} className="other-projects-item">
                     <h3>Vücut Kitle İndeksi Hesaplayıcı</h3>
-                    <p>Boy ve kilo bilgilerinizi girerek hesaplama yapabilirsiniz.</p>
                 </Link>
                 
             </div>
@@ -147,14 +67,14 @@ export default function App() {
                         <button onClick={() => {setLogin(false)}} style={login === false ? {backgroundColor: '#007BFF', color: '#fff'} : {}}>Kayıt Ol</button>
                     </header>
                     {login === true ?
-                        <form onSubmit={handleLogin}>
+                        <form>
                             <input type="text" name="email" placeholder="E-posta" required />
                             <input type="password" name="password" placeholder="Şifre" required />
                             <button>Giriş Yap</button>
                             <p>Henüz hesabınız yoksa <span onClick={() => (setLogin(false))}>KAYIT OL</span>'un.</p>
                         </form>
                         :
-                        <form onSubmit={handleSignup}>
+                        <form>
                             <input type="text" name="name" placeholder="İsim" required/>
                             <input type="text" name="surname" placeholder="Soyisim" required/>
                             <input type="text" name="email" placeholder="E-posta" required/>
@@ -181,15 +101,11 @@ export default function App() {
                         <li><Link>İletişim</Link></li>
                     </ul>
 
-                    {userData === null ?
-                    <button onClick={() => {setOpenLogin(true)}}>Giriş Yap / Kayıt Ol</button>
-                    :
-                    <>
-                        <p>{userData.name} {userData.surname} /</p>
-                        <button onClick={handleLogout}>Çıkış</button>
-                    </>
-                    }
-
+                    <ul className="auth">
+                        <li onClick={() => {setOpenLogin(true)}}>Giriş Yap</li>
+                        <p>veya</p>
+                        <li onClick={() => {setOpenLogin(true)}}>Kayıt Ol</li>
+                    </ul>
                 </div>
 
             </header>
