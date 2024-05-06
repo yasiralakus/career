@@ -858,6 +858,7 @@ p, h1, h2, h3, h4, h5, h6 {
     > .container {
         display: grid;
         grid-template-columns: 2fr 1fr;
+        align-items: start;
         gap: 32px;
     }
 }
@@ -865,7 +866,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .jobs-container-left {
     > div:first-child {
         border: 1px solid #eaeaea;
-        height: 632px;
+        min-height: 632px;
         padding: 25px;
     }
 }
@@ -873,13 +874,14 @@ p, h1, h2, h3, h4, h5, h6 {
 .jobs-container-right {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 16px;
+    padding: 25px;
+    border: 1px solid #eaeaea;
     > form {
         display: flex;
         flex-direction: column;
         gap: 19.45px;
-        padding: 25px;
-        border: 1px solid #eaeaea;
+        
         > h1 {
             font-size: 19px;
             color: #333;
@@ -915,6 +917,18 @@ p, h1, h2, h3, h4, h5, h6 {
             }
         }
         
+    }
+
+    > button {
+        background-color: var(--primary);
+        padding: 10px;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+        letter-spacing: 1px;
+    }
+    > button:hover {
+        background-color: #0b5ed7;
     }
 }
 
