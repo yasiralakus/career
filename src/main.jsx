@@ -9,6 +9,7 @@ import Companies from './Pages/Companies.jsx'
 import About from './Pages/About.jsx'
 import JobDetails from './Pages/JobDetails.jsx'
 import CompanyDetails from './Pages/CompanyDetails.jsx'
+import Contact from './Pages/Contact.jsx'
 
 const router = createBrowserRouter([
     {
@@ -38,6 +39,10 @@ const router = createBrowserRouter([
             {
                 path: '/company-details',
                 element: <CompanyDetails />
+            },
+            {
+                path: '/contact',
+                element: <Contact />
             }
         ]
     }

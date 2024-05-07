@@ -1,6 +1,8 @@
 import { createClient } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
+
+export const DataContext = createContext(null);
 
 export default function App() {
 
@@ -8,6 +10,9 @@ export default function App() {
     const [openLogin, setOpenLogin] = useState(false);
     const [scrollPosition, setScrollPosition] = useState(null);
     const [otherProjects, setOtherProjects] = useState(false);
+    const [inputTitle, setInputTitle] = useState(null);
+    const [inputLocation, setInputLocation] = useState(null);
+    const [inputStatus, setInputStatus] = useState(null);
     
     useEffect(() => {
         const handleScroll = () => {
@@ -24,7 +29,7 @@ export default function App() {
         <div className="full-page">
 
             <button id="other-button" onClick={() => (otherProjects === true ? setOtherProjects(false) : setOtherProjects(true))}>
-                <i style={otherProjects === true ? {transform: 'rotateY(180deg)'} : {}} className="fa-solid fa-angle-right"></i>
+                <i style={otherProjects === true ? {transform: 'rotate(180deg)'} : {}} className="fa-solid fa-angle-right"></i>
             </button>
 
             <div style={otherProjects === true ? {left: '0'}:{}} className="other-projects">
@@ -97,8 +102,7 @@ export default function App() {
                         <li><Link to={'/jobs'}>İlanlar</Link></li>
                         <li><Link to={'/companies'}>Şirketler</Link></li>
                         <li><Link to={'/about-us'}>Hakkımızda</Link></li>
-                        <li><Link>Blog</Link></li>
-                        <li><Link>İletişim</Link></li>
+                        <li><Link to={'/contact'}>İletişim</Link></li>
                     </ul>
 
                     <ul className="auth">
@@ -110,7 +114,9 @@ export default function App() {
 
             </header>
 
-            <Outlet />
+            <DataContext.Provider value={{inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus}}>
+                <Outlet />
+            </DataContext.Provider>
 
             <footer className="footer">
 

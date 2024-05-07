@@ -1,10 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { DataContext } from "../App";
 
 export default function Jobs() {
 
     const [jobsPage, setJobsPage] = useState(1);
     const [filteredJobs , setFilteredJobs] = useState(null);
+    const {inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus} = useContext(DataContext);
+    console.log(inputStatus)
+    console.log(inputTitle)
+    console.log(inputLocation)
+
 
     const jobs = [
         {
@@ -309,19 +315,16 @@ export default function Jobs() {
         },
     ]
 
-    console.log(filteredJobs)
     function handleFilter(e) {
         e.preventDefault();
 
         const formData = new FormData(e.target);
         const formObj = Object.fromEntries(formData);
-        console.log(formObj)
         const filtered = jobs.filter((job) => {
             return  job.job_title.toLowerCase().includes(formObj.title.toLowerCase()) &&
                     job.job_status.toLowerCase().includes(formObj.job_status.toLowerCase()) &&
                     job.job_location.toLowerCase().includes(formObj.location.toLowerCase());
         });
-        console.log(filtered)
         setFilteredJobs(filtered.length > 0 ? filtered : null)
         setJobsPage(1);
 
@@ -329,8 +332,7 @@ export default function Jobs() {
 
     function clearFilter(e) {
         e.preventDefault();
-
-        setFilteredJobs(null);
+        setInputTitle(null);
         setJobsPage(1);
     }
 
@@ -431,10 +433,10 @@ export default function Jobs() {
 
                         <form onSubmit={handleFilter}>
                             <h1>İş Ara</h1>
-                            <input name="title" type="text" placeholder="Anahtar kelime gir" />
+                            <input name="title" type="text" placeholder="Anahtar kelime gir" defaultValue={inputTitle === null ? '' : inputTitle}/>
                             <div>
                                 <h3>Konum</h3>
-                                <input name="location" type="text" placeholder="Konum gir" />
+                                <input name="location" type="text" placeholder="Konum gir" defaultValue={inputLocation === null ? '' : inputLocation}/>
                             </div>
                             <div>
                                 <h3>İş Tipi</h3>

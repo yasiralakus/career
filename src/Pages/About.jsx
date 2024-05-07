@@ -25,7 +25,7 @@ export default function About() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-          if (post < 1354) {
+          if (post < 354) {
             setPost(post + 1);
           } else {
             clearInterval(interval);
@@ -37,7 +37,7 @@ export default function About() {
 
       useEffect(() => {
         const interval = setInterval(() => {
-          if (member < 1741) {
+          if (member < 541) {
             setMembers(member + 1);
           } else {
             clearInterval(interval);

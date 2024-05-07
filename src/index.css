@@ -332,6 +332,7 @@ p, h1, h2, h3, h4, h5, h6 {
 .filter-jobs {
     position: relative;
     height: 100px;
+    width: 100%;
     > .container {
         > form {
             width: 1170px;
@@ -978,17 +979,12 @@ p, h1, h2, h3, h4, h5, h6 {
 
 .companies-container {
     padding: 100px 0;
-    > .container {
-        display: grid;
-        grid-template-columns: 2fr 1fr;
-        gap: 32px;
-    }
 }
 
 .compaines-container-left {
     > div {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
         gap: 32px;
     }
 }
@@ -1546,3 +1542,336 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 /* COMPANY DETAILS END */
+
+/* CONTACT START */
+
+.contact-page {
+    padding: 100px 0;
+    > .container {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+}
+
+.contact-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    > div {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        > div {
+            display: flex;
+            margin-top: 10px;
+            gap: 16px;
+            > a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 14px;
+                color: #454545;
+                border-radius: 50%;
+                width: 30px;
+                height: 30px;
+                background-color: #ECECEC;
+            }
+            > a:hover {
+                background-color: var(--primary);
+                color: #fff;
+            }
+        }
+        > p {
+            font-size: 14px;
+            color: #454545;
+            letter-spacing: 1px;
+            > i {
+                width: 40px;
+            }
+        }
+    }
+
+    > form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        > h1 {
+            font-size: 23px;
+            color: #333;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        > input, textarea {
+            padding: 10px 10px;
+            border: 1px solid #eaeaea;
+            outline: none;
+            border-radius: 4px;
+            transition: all .3s;
+        }
+        > button {
+            background-color: var(--primary);
+            padding: 10px;
+            border: none;
+            color: #fff;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        > button:hover {
+            background-color: #0b5ed7;
+        }
+        > input:focus {
+            border: 1px solid #333;
+        }
+        > textarea:focus {
+            border: 1px solid #333;
+        }
+    }
+}
+
+/* CONTACT END */
+
+@media (width < 1200px) {
+
+    .container {
+        width: 960px;
+        padding: 0 16px;
+    }
+
+    .filter-jobs {
+        > .container {
+            > form {
+                width: 960px;
+                left: auto;
+            }
+        }
+    }
+    
+}
+
+@media (width < 1050px) {
+
+    .container {
+        width: 700px;
+        padding: 0 16px;
+    }
+
+    .filter-jobs {
+        width: 100%;
+        > .container {
+            > form {
+                width: 668px;
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    }
+    
+    .home-hero {
+        > div {
+            > h1 {
+                font-size: 60px;
+            }
+        }
+    }
+
+    .latest-jobs {
+        > .container {
+            > h1 {
+                font-size: 33px;
+            }
+            > p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .site-details {
+        > div {
+            width: 700px;
+        }
+    }
+
+    .home-comment-item {
+        > h3 {
+            font-size: 20px;
+        }
+    }
+
+    .our-blog {
+        > .container {
+            > h1 {
+                font-size: 33px;
+            }
+            > p {
+                font-size: 14px;
+            }
+            > div {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+    .footer {
+        > .container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+    
+}
+
+@media (width < 720px) {
+
+    .container {
+        width: 540px;
+    }
+
+    .filter-jobs {
+        width: 100%;
+        > .container {
+            > form {
+                width: 508px;
+                gap: 15px;
+                grid-template-columns: 1fr 1fr;
+                > input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .home-hero {
+        > div {
+            > h1 {
+                font-size: 50px;
+            }
+            > p {
+                font-size: 22px;
+            }
+        }
+    }
+
+    .site-details {
+        > div {
+            width: 540px;
+        }
+    }
+    
+}
+
+@media (width < 570px) {
+
+    .container {
+        width: 100%;
+    }
+
+    .filter-jobs {
+        width: 100%;
+        > .container {
+            > form {
+                left: 0px;
+                width: 100%;
+                gap: 15px;
+                padding: 30px;
+                grid-template-columns: 1fr 1fr;
+                > input {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .home-hero {
+        > div {
+            > h1 {
+                font-size: 24px;
+            }
+            > p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .latest-jobs {
+        > .container {
+            > h1 {
+                font-size: 24px;
+            }
+            > p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .our-blog {
+        > .container {
+            > h1 {
+                font-size: 24px;
+            }
+            > p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .featured-companies {
+        > .container {
+            > h1 {
+                font-size: 24px;
+            }
+            > p {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .latest-jobs-item {
+        flex-direction: column;
+        align-items: start;
+        gap: 8px;
+        > div {
+            align-items: start !important;
+            > h4 {
+                text-align: left !important;
+            }
+            > h3 {
+                font-size: 14px;
+
+            }
+            
+        }
+    }
+
+    .site-details {
+        > div {
+            grid-template-columns: 1fr;
+            gap: 32px;
+            > div {
+                > h1 {
+                    font-size: 40px;
+                }
+                > p {
+                    font-size: 18px;
+                }
+            }
+        }
+    }
+
+    .home-comment-item {
+        > h3 {
+            font-size: 18px;
+        }
+    }
+
+    .home-comment-item {
+        > h3 {
+            font-size: 14px;
+        }
+    }
+
+    .footer {
+        > .container {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+}
