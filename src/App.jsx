@@ -13,6 +13,7 @@ export default function App() {
     const [inputTitle, setInputTitle] = useState(null);
     const [inputLocation, setInputLocation] = useState(null);
     const [inputStatus, setInputStatus] = useState(null);
+    const [openMobileMenu, setOpenMobileMenu] = useState(false)
     
     useEffect(() => {
         const handleScroll = () => {
@@ -27,6 +28,24 @@ export default function App() {
 
     return (
         <div className="full-page">
+
+            <div style={openMobileMenu === true ? {right: '0'} : {}} className="mobile-menu">
+
+                <div style={{position: 'absolute',top: '30px'}} className="mobile-button" onClick={() => setOpenMobileMenu(false)}>
+                    <span style={openMobileMenu === true ? {transform: 'rotate(45deg) translateX(7px) translateY(5px)'} : {}}></span>
+                    <span style={openMobileMenu === true ? {opacity: '0'} : {}}></span>
+                    <span style={openMobileMenu === true ? {transform: 'rotate(135deg) translateX(-6px) translateY(5px)'} : {}}></span>
+                </div>
+
+                <ul>
+                    <li><Link to={'/'}>Anasayfa</Link></li>
+                    <li><Link to={'/jobs'}>İlanlar</Link></li>
+                    <li><Link to={'/companies'}>Şirketler</Link></li>
+                    <li><Link to={'/about-us'}>Hakkımızda</Link></li>
+                    <li><Link to={'/contact'}>İletişim</Link></li>
+                </ul>
+
+            </div>
 
             <button id="other-button" onClick={() => (otherProjects === true ? setOtherProjects(false) : setOtherProjects(true))}>
                 <i style={otherProjects === true ? {transform: 'rotate(180deg)'} : {}} className="fa-solid fa-angle-right"></i>
@@ -104,6 +123,12 @@ export default function App() {
                         <li><Link to={'/about-us'}>Hakkımızda</Link></li>
                         <li><Link to={'/contact'}>İletişim</Link></li>
                     </ul>
+
+                    <div className="mobile-button" onClick={() => openMobileMenu === true ? setOpenMobileMenu(false) : setOpenMobileMenu(true)}>
+                        <span style={openMobileMenu === true ? {transform: 'rotate(45deg) translateX(7px) translateY(5px)'} : {}}></span>
+                        <span style={openMobileMenu === true ? {opacity: '0'} : {}}></span>
+                        <span style={openMobileMenu === true ? {transform: 'rotate(135deg) translateX(-6px) translateY(5px)'} : {}}></span>
+                    </div>
 
                     <ul className="auth">
                         <li onClick={() => {setOpenLogin(true)}}>Giriş Yap</li>

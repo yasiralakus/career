@@ -185,6 +185,23 @@ export default function CompanySliders() {
         autoplay={{
             delay: 2000,
             disableOnInteraction: false,
+        }}
+        breakpoints={{
+            900: {
+                slidesPerView: 6,
+            },
+            800: {
+                slidesPerView: 5,
+            },
+            700: {
+                slidesPerView: 4,
+            },
+            600: {
+                slidesPerView: 3,
+            },
+            0: {
+                slidesPerView: 2,
+            },
           }}
         spaceBetween={15}
         loop={true}

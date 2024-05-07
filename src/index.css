@@ -1543,6 +1543,10 @@ p, h1, h2, h3, h4, h5, h6 {
 
 /* COMPANY DETAILS END */
 
+#mobile-button {
+    display: none;
+}
+
 /* CONTACT START */
 
 .contact-page {
@@ -1629,6 +1633,10 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 }
 
+.mobile-menu {
+    display: none;
+}
+
 /* CONTACT END */
 
 @media (width < 1200px) {
@@ -1654,6 +1662,58 @@ p, h1, h2, h3, h4, h5, h6 {
     .container {
         width: 700px;
         padding: 0 16px;
+    }
+
+    .nav, .auth {
+        display: none;
+    }
+
+    .mobile-menu{
+        width: 300px;
+        right: -300px;
+        display: block;
+        position: fixed;
+        z-index: 100;
+        height: 100vh;
+        background-color: var(--primary);
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: center;
+        gap: 16px;
+        padding: 16px;
+        transition: all .3s;
+        > ul {
+            position: absolute;
+            top: 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 300px;
+            right: 0;
+            > li {
+                width: 100%;
+                background-color: #fff;
+                padding: 10px 16px;
+                > a {
+                    width: 100%;
+                    color: var(--primary);
+                }
+            }
+        }
+    }
+
+    .mobile-button {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+        > span {
+            transition: all .3s;
+            width: 30px;
+            height: 3px;
+            background-color: #fff;
+        }
     }
 
     .filter-jobs {
@@ -1768,19 +1828,27 @@ p, h1, h2, h3, h4, h5, h6 {
         width: 100%;
         > .container {
             > form {
+                top: -90px;
                 left: 0px;
                 width: 100%;
                 gap: 15px;
                 padding: 30px;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns:  1fr;
                 > input {
                     width: 100%;
+                }
+                > button {
+                    padding: 8px;
                 }
             }
         }
     }
 
     .home-hero {
+        height: 450px;
+        > img {
+            height: 450px;
+        }
         > div {
             > h1 {
                 font-size: 24px;
@@ -1828,6 +1896,10 @@ p, h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
         align-items: start;
         gap: 8px;
+        > img {
+            width: 50px;
+            height: 50px;
+        }
         > div {
             align-items: start !important;
             > h4 {
@@ -1835,10 +1907,12 @@ p, h1, h2, h3, h4, h5, h6 {
             }
             > h3 {
                 font-size: 14px;
-
             }
-            
         }
+    }
+
+    .latest-jobs-item:hover {
+        box-shadow: none;
     }
 
     .site-details {
