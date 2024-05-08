@@ -1657,6 +1657,20 @@ p, h1, h2, h3, h4, h5, h6 {
         padding: 0 16px;
     }
 
+    .job-details-container {
+        > .container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .job-details-right {
+        > footer {
+            > img {
+                width: 100%;
+            }
+        }
+    }
+
     .filter-jobs {
         > .container {
             > form {
@@ -1671,6 +1685,13 @@ p, h1, h2, h3, h4, h5, h6 {
 @media (width < 1050px) {
 
     .jobs-container {
+        > .container {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .company-details-container {
+        padding: 50px 0;
         > .container {
             grid-template-columns: 1fr;
         }
@@ -1880,6 +1901,14 @@ p, h1, h2, h3, h4, h5, h6 {
             grid-template-columns: 1fr 1fr;
         }
     }
+
+    .jobs-container-left {
+        order: 2;
+    }
+
+    .jobs-container-right {
+        order: 1;
+    }
     
 }
 
@@ -1887,6 +1916,10 @@ p, h1, h2, h3, h4, h5, h6 {
 
     .compaines-container-left-navigation {
         margin-top: 32px;
+    }
+
+    .job-details-container {
+        padding: 50px 0;
     }
 
     .container {
@@ -1971,6 +2004,35 @@ p, h1, h2, h3, h4, h5, h6 {
 
     .container {
         width: 100%;
+    }
+
+    .job-details-left {
+        padding: 0;
+        > header {
+            > img {
+                width: 50px;
+                height: 50px;
+            }
+            > div {
+                margin-right: 0 !important; 
+                margin-left: 0 !important;
+                > h3 {
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+
+                > h6 {
+                    font-size: 13px;
+                    font-weight: 500;
+                }
+
+                > h5 {
+                    font-size: 13px;
+                    font-weight: 500;
+                    padding: 3px 6px;
+                }
+            }
+        }
     }
 
     .contact-page {
