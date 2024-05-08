@@ -29,21 +29,18 @@ export default function App() {
     return (
         <div className="full-page">
 
-            <div style={openMobileMenu === true ? {right: '0'} : {}} className="mobile-menu">
+            <div style={openMobileMenu === true ? {display: 'block'} : {display: 'none'}} className="mobile-menu-bg">
 
-                <div style={{position: 'absolute',top: '30px'}} className="mobile-button" onClick={() => setOpenMobileMenu(false)}>
-                    <span style={openMobileMenu === true ? {transform: 'rotate(45deg) translateX(7px) translateY(5px)'} : {}}></span>
-                    <span style={openMobileMenu === true ? {opacity: '0'} : {}}></span>
-                    <span style={openMobileMenu === true ? {transform: 'rotate(135deg) translateX(-6px) translateY(5px)'} : {}}></span>
+                <div style={openMobileMenu === true ? {right: '0'} : {}} className="mobile-menu">
+                    <ul>
+                        <button onClick={() => (setOpenMobileMenu(false))}><i class="fa-solid fa-xmark"></i></button>
+                        <li><Link to={'/'}>Anasayfa</Link></li>
+                        <li><Link to={'/jobs'}>İlanlar</Link></li>
+                        <li><Link to={'/companies'}>Şirketler</Link></li>
+                        <li><Link to={'/about-us'}>Hakkımızda</Link></li>
+                        <li><Link to={'/contact'}>İletişim</Link></li>
+                    </ul>
                 </div>
-
-                <ul>
-                    <li><Link to={'/'}>Anasayfa</Link></li>
-                    <li><Link to={'/jobs'}>İlanlar</Link></li>
-                    <li><Link to={'/companies'}>Şirketler</Link></li>
-                    <li><Link to={'/about-us'}>Hakkımızda</Link></li>
-                    <li><Link to={'/contact'}>İletişim</Link></li>
-                </ul>
 
             </div>
 
@@ -125,9 +122,9 @@ export default function App() {
                     </ul>
 
                     <div className="mobile-button" onClick={() => openMobileMenu === true ? setOpenMobileMenu(false) : setOpenMobileMenu(true)}>
-                        <span style={openMobileMenu === true ? {transform: 'rotate(45deg) translateX(7px) translateY(5px)'} : {}}></span>
-                        <span style={openMobileMenu === true ? {opacity: '0'} : {}}></span>
-                        <span style={openMobileMenu === true ? {transform: 'rotate(135deg) translateX(-6px) translateY(5px)'} : {}}></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
 
                     <ul className="auth">
