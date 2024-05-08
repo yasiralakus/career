@@ -412,7 +412,6 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .latest-jobs-item {
-    /* border-bottom: 1px solid #eaeaea; */
     display: flex;
     padding: 23px;
     justify-content: space-between;
@@ -429,16 +428,18 @@ p, h1, h2, h3, h4, h5, h6 {
             font-weight: 600;
             color: #333;
         }
-        > p {
-            font-size: 14px;
-            font-weight: 400;
-            color: #6b6b6b;
+        > div {
             display: flex;
             gap: 8px;
-            > span {
+            > p {
                 font-size: 14px;
                 color: var(--primary);
                 font-weight: 700;
+            }
+            > h6 {
+                font-size: 14px;
+                font-weight: 500;
+                color: #454545;
             }
         }
         > h5 {
@@ -1836,6 +1837,10 @@ p, h1, h2, h3, h4, h5, h6 {
 
 @media (width < 720px) {
 
+    .compaines-container-left-navigation {
+        margin-top: 32px;
+    }
+
     .container {
         width: 540px;
     }
@@ -1850,6 +1855,7 @@ p, h1, h2, h3, h4, h5, h6 {
         > div:first-child {
             min-height: 580px;
             padding: 0;
+            border: none;
         }
     }
 
@@ -1890,6 +1896,13 @@ p, h1, h2, h3, h4, h5, h6 {
 
     .container {
         width: 100%;
+    }
+
+    .jobs-container-left {
+        > div:first-child {
+            min-height: 450px;
+            padding: 0;
+        }
     }
 
     .compaines-container-left {
@@ -1967,22 +1980,41 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 
     .latest-jobs-item {
-        flex-direction: column;
-        align-items: start;
         gap: 8px;
+        padding: 20px 0;
         > img {
             width: 50px;
             height: 50px;
         }
         > div {
-            align-items: start !important;
-            > h4 {
-                text-align: left !important;
-            }
+            gap: 4px;
             > h3 {
-                font-size: 14px;
+                font-size: 12px !important;
+                font-weight: 500;
+            }
+
+            > h5 {
+                font-size: 12px !important;
+                font-weight: 500;
+            }
+
+            > h4 {
+                font-size: 12px !important;
+                padding: 3px 5px;
+                font-weight: 500;
+            }
+            > div {
+                flex-direction: column;
+                gap: 4px;
+                > p {
+                    font-size: 12px !important;
+                }
+                > h6 {
+                    font-size: 12px;
+                }
             }
         }
+        
     }
 
     .latest-jobs-item:hover {

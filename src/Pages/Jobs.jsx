@@ -373,7 +373,10 @@ export default function Jobs() {
                                         <img src={x.company_logo} alt="" />
                                         <div className="" style={{textAlign: 'left', marginRight: 'auto'}}>
                                             <h3>{x.job_title}</h3>
-                                            <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_location}</p>
+                                            <div>
+                                                <p>{x.company_name}</p>
+                                                <h6><i className="fa-solid fa-location-dot"></i> {x.job_location}</h6>
+                                            </div>
                                         </div>
                                         <div style={{alignItems: 'end'}}>
                                             <h5>{x.job_salary}</h5>
@@ -389,7 +392,10 @@ export default function Jobs() {
                                         <img src={x.company_logo} alt="" />
                                         <div className="" style={{textAlign: 'left', marginRight: 'auto'}}>
                                             <h3>{x.job_title}</h3>
-                                            <p><span>{x.company_name}</span> <i className="fa-solid fa-location-dot"></i> {x.job_location}</p>
+                                            <div>
+                                                <p>{x.company_name}</p>
+                                                <h6><i className="fa-solid fa-location-dot"></i> {x.job_location}</h6>
+                                            </div>
                                         </div>
                                         <div style={{alignItems: 'end'}}>
                                             <h5>{x.job_salary}</h5>
