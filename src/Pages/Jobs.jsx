@@ -6,10 +6,7 @@ export default function Jobs() {
 
     const [jobsPage, setJobsPage] = useState(1);
     const [filteredJobs , setFilteredJobs] = useState(null);
-    const {inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus} = useContext(DataContext);
-    console.log(inputStatus)
-    console.log(inputTitle)
-    console.log(inputLocation)
+    const {inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus, setOpenMobileMenu, openMobileMenu} = useContext(DataContext);
 
 
     const jobs = [
@@ -338,6 +335,7 @@ export default function Jobs() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setOpenMobileMenu(false);
     }, [])
 
     return (

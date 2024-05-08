@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { DataContext } from "../App";
 
 export default function About() {
 
@@ -7,9 +8,12 @@ export default function About() {
     const [member,setMembers] = useState(0);
     const [company,setCompany] = useState(0);
     const [scrollPosition, setScrollPosition] = useState(null);
+    const {openMobileMenu, setOpenMobileMenu} = useContext(DataContext);
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
+        setOpenMobileMenu(false)
     }, [])
 
     useEffect(() => {

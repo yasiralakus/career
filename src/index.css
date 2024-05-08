@@ -765,7 +765,7 @@ p, h1, h2, h3, h4, h5, h6 {
     left: 0;
     cursor: pointer;
     top: 300px;
-    background-color: #fff;
+    background-color: #eaeaea;
     > i {
         font-size: 30px;
         transition: all .5s;
@@ -777,7 +777,7 @@ p, h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-direction: column;
     gap: 2px;
-    background-color: #eaeaea;
+    background-color: #fff;
     z-index: 5;
     width: 0;
     top: 350px;
@@ -788,7 +788,7 @@ p, h1, h2, h3, h4, h5, h6 {
         padding: 10px;
         font-size: 16px;
         font-weight: 600;
-        background-color: #fff;
+        background-color: #eaeaea;
     }
 }
 
@@ -796,7 +796,7 @@ p, h1, h2, h3, h4, h5, h6 {
     padding: 10px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: #eaeaea;
     gap: 3px;
 
     > h3 {
@@ -813,7 +813,7 @@ p, h1, h2, h3, h4, h5, h6 {
 }
 
 .other-projects-item:hover {
-    background-color: #eaeaea;
+    background-color: #fff;
 }
 
 .jobs-hero {
@@ -1703,7 +1703,12 @@ p, h1, h2, h3, h4, h5, h6 {
 
     .contact-box {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 50px;
+        > form {
+            > h1 {
+                font-size: 16px;
+            }
+        }
     }
 
     .about-details {
@@ -1777,47 +1782,47 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 
     .mobile-menu{
-        width: 250px;
-        right: -250px;
+        width: 300px;
+        right: -300px;
         display: block;
-        position: fixed;
         z-index: 201;
+        right: 0;
+        position: absolute;
         height: 100vh;
         background-color: #fff;
         display: flex;
         flex-direction: column;
         align-items: end;
-        justify-content: center;
+        justify-content: start;
         gap: 16px;
-        padding: 16px;
+        padding: 20px 16px;
         transition: all .3s;
+        > button {
+            background-color: transparent;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 40px;
+            text-align: right;
+        }
         > ul {
-            position: absolute;
-            top: 20px;
             display: flex;
             flex-direction: column;
-            gap: 8px;
             width: 100%;
-            right: 0;
-            > button {
-                background-color: transparent;
-                border: none;
-                color: var(--primary);
-                cursor: pointer;
-                font-size: 40px;
-                text-align: right;
-                padding-right: 15px;
-            }
+            border-top: 1px solid #eaeaea;
             > li {
                 width: 100%;
                 display: inline-block;
                 background-color: #fff;
+                border-bottom: 1px solid #eaeaea;
                 > a {
                     width: 100%;
-                    padding: 15px;
+                    padding: 20px 0;
                     display: inline-block;
                     text-align: right;
                     color: var(--primary);
+                    font-weight: 600;
+                    letter-spacing: 1px;
                 }
             }
         }
@@ -1883,6 +1888,7 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 
     .our-blog {
+        padding: 50px 0;
         > .container {
             > h1 {
                 font-size: 33px;
@@ -1892,11 +1898,16 @@ p, h1, h2, h3, h4, h5, h6 {
             }
             > div {
                 grid-template-columns: 1fr;
+                gap: 40px;
+                > div {
+                    gap: 8px;
+                }
             }
         }
     }
 
     .footer {
+        padding: 25px 0;
         > .container {
             grid-template-columns: 1fr 1fr;
         }
@@ -2116,6 +2127,7 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 
     .featured-companies {
+        padding: 50px 0;
         > .container {
             > h1 {
                 font-size: 24px;
@@ -2125,6 +2137,7 @@ p, h1, h2, h3, h4, h5, h6 {
             }
         }
     }
+
 
     .latest-jobs-item {
         gap: 8px;
@@ -2198,6 +2211,16 @@ p, h1, h2, h3, h4, h5, h6 {
     .footer {
         > .container {
             grid-template-columns: 1fr;
+        }
+    }
+
+    .company-details-left {
+        padding: 0;
+        > h1 {
+            font-size: 16px;
+            color: #000;
+            font-weight: 500;
+            margin-bottom: 10px;
         }
     }
     

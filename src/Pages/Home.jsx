@@ -7,9 +7,10 @@ import { DataContext } from "../App";
 export default function Home() {
     useEffect(() => {
         window.scrollTo(0, 0);
+        setOpenMobileMenu(false);
     }, [])
 
-    const {inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus} = useContext(DataContext);
+    const {inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus, setOpenMobileMenu} = useContext(DataContext);
 
     const jobs = [
         {
@@ -324,7 +325,6 @@ export default function Home() {
         e.preventDefault();
         const formData = new FormData(e.target);
         const formObj = Object.fromEntries(formData);
-        console.log(formObj)
 
         setInputTitle(formObj.title === '' ? null : formObj.title);
         setInputLocation(formObj.location === '' ? null : formObj.location);

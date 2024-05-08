@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { DataContext } from "../App";
 
 export default function Contact() {
 
+    const {openMobileMenu, setOpenMobileMenu} = useContext(DataContext);
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        setOpenMobileMenu(false)
     }, [])
 
     return (
@@ -33,7 +37,7 @@ export default function Contact() {
                     <div className="contact-box">
 
                         <div>
-                            <p><i class="fa-solid fa-phone"></i> House 09, Road 32, Mohammadpur Dhaka-1200, UK</p>
+                            <p><i class="fa-solid fa-phone"></i> House 09, Road 32, Mohammadpur, UK</p>
                             <p><i class="fa-solid fa-fax"></i> +88 018 785 454 589</p>
                             <p><i class="fa-regular fa-envelope"></i> +88 123 785 132 543</p>
                             <p><i class="fa-solid fa-location-dot"></i> keller@email.com</p>

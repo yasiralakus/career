@@ -32,8 +32,8 @@ export default function App() {
             <div style={openMobileMenu === true ? {display: 'block'} : {display: 'none'}} className="mobile-menu-bg">
 
                 <div style={openMobileMenu === true ? {right: '0'} : {}} className="mobile-menu">
+                    <button onClick={() => (setOpenMobileMenu(false))}><i class="fa-solid fa-xmark"></i></button>
                     <ul>
-                        <button onClick={() => (setOpenMobileMenu(false))}><i class="fa-solid fa-xmark"></i></button>
                         <li><Link to={'/'}>Anasayfa</Link></li>
                         <li><Link to={'/jobs'}>İlanlar</Link></li>
                         <li><Link to={'/companies'}>Şirketler</Link></li>
@@ -121,7 +121,7 @@ export default function App() {
                         <li><Link to={'/contact'}>İletişim</Link></li>
                     </ul>
 
-                    <div className="mobile-button" onClick={() => openMobileMenu === true ? setOpenMobileMenu(false) : setOpenMobileMenu(true)}>
+                    <div className="mobile-button" onClick={() => (setOpenMobileMenu(true))}>
                         <span></span>
                         <span></span>
                         <span></span>
@@ -136,7 +136,7 @@ export default function App() {
 
             </header>
 
-            <DataContext.Provider value={{inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus}}>
+            <DataContext.Provider value={{inputTitle, setInputTitle, inputLocation, setInputLocation, inputStatus, setInputStatus, openMobileMenu, setOpenMobileMenu}}>
                 <Outlet />
             </DataContext.Provider>
 

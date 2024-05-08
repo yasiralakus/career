@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { DataContext } from "../App";
 
 export default function CompanyDetails() {
 
+    const {openMobileMenu, setOpenMobileMenu} = useContext(DataContext);
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        setOpenMobileMenu(false);
     }, [])
 
     return (
@@ -41,10 +45,6 @@ export default function CompanyDetails() {
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing ept. Tenetur, voluptas!</p>
                         <p>Tempore saepe cumque nemo, expedita quae vitae.</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing ept. Tenetur, voluptas!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing ept. Accusantium, corporis atque.</p>
-                        <p>Tempore saepe cumque nemo, expedita quae vitae.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing ept. Voluptate repellat vitae fuga placeat repudiandae a reprehenderit voluptates ipsum. Porro, accusantium..</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing ept. Tempore saepe cumque nemo, expedita quae vitae.</p>
 
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi vitae unde quasi alias maxime quos suscipit! Quas dicta quam sunt deserunt autem blanditiis soluta aperiam a quis vero alias asperiores minima debitis quo reprehenderit pariatur, eaque dignissimos similique cupiditate earum, molestiae dolorum. Rem, accusantium deserunt! Dolorem molestiae placeat odit quos.</p>

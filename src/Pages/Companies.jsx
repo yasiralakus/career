@@ -1,10 +1,15 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { DataContext } from "../App";
 
 export default function Companies() {
 
+    const {openMobileMenu, setOpenMobileMenu} = useContext(DataContext);
+
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        setOpenMobileMenu(false)
     }, [])
 
     const companies = [

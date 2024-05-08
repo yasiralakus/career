@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { DataContext } from "../App";
 
 export default function JobDetails() {
 
+    const {openMobileMenu, setOpenMobileMenu} = useContext(DataContext);
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        setOpenMobileMenu(false)
     }, [])
 
     return (
